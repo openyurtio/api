@@ -1,18 +1,17 @@
 /*
-Copyright 2021 The OpenYurt Authors.
+Copyright 2023 The OpenYurt Authors.
 
-Licensed under the Apache License, Version 2.0 (the "License");
+Licensed under the Apache License, Version 2.0 (the License);
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
+distributed under the License is distributed on an AS IS BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
 */
 
 package v1alpha1
@@ -34,7 +33,7 @@ const (
 	WorkLoadFailure YurtAppDaemonConditionType = "WorkLoadFailure"
 )
 
-// YurtAppDaemonSpec defines the desired state of YurtAppDaemon.
+// YurtAppDaemonSpec defines the desired state of YurtAppDaemon
 type YurtAppDaemonSpec struct {
 	// Selector is a label query over pods that should match the replica count.
 	// It must match the pod template's labels.
@@ -54,7 +53,7 @@ type YurtAppDaemonSpec struct {
 	RevisionHistoryLimit *int32 `json:"revisionHistoryLimit,omitempty"`
 }
 
-// YurtAppDaemonStatus defines the observed state of YurtAppDaemon.
+// YurtAppDaemonStatus defines the observed state of YurtAppDaemon
 type YurtAppDaemonStatus struct {
 	// ObservedGeneration is the most recent generation observed for this YurtAppDaemon. It corresponds to the
 	// YurtAppDaemon's generation, which is updated on mutation by the API Server.
@@ -100,13 +99,14 @@ type YurtAppDaemonCondition struct {
 }
 
 // +genclient
+// +k8s:openapi-gen=true
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
-// +kubebuilder:resource:shortName=yad
+// +kubebuilder:resource:scope=Namespaced,path=yurtappdaemons,shortName=yad,categories=all
 // +kubebuilder:printcolumn:name="WorkloadTemplate",type="string",JSONPath=".status.templateType",description="The WorkloadTemplate Type."
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp",description="CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC."
 
-// YurtAppDaemon is the Schema for the YurtAppDaemon API
+// YurtAppDaemon is the Schema for the samples API
 type YurtAppDaemon struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

@@ -1,14 +1,14 @@
 /*
-Copyright 2020 The OpenYurt Authors.
+Copyright 2023 The OpenYurt Authors.
 
-Licensed under the Apache License, Version 2.0 (the "License");
+Licensed under the Apache License, Version 2.0 (the License);
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
+distributed under the License is distributed on an AS IS BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
@@ -26,8 +26,6 @@ type NodePoolType string
 const (
 	Edge  NodePoolType = "Edge"
 	Cloud NodePoolType = "Cloud"
-
-	NodePoolTypeLabelKey = "openyurt.io/node-pool-type"
 )
 
 // NodePoolSpec defines the desired state of NodePool
@@ -70,19 +68,17 @@ type NodePoolStatus struct {
 	Nodes []string `json:"nodes,omitempty"`
 }
 
+// +genclient:nonNamespaced
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:scope=Cluster,path=nodepools,shortName=np,categories=all
+// +kubebuilder:subresource:status
+// +kubebuilder:deprecatedversion:warning="apps.openyurt.io/v1alpha1 NodePool is deprecated in v1.0.0+; use apps.openyurt.io/v1beta1 NodePool"
 // +kubebuilder:printcolumn:name="Type",type="string",JSONPath=".spec.type",description="The type of nodepool"
 // +kubebuilder:printcolumn:name="ReadyNodes",type="integer",JSONPath=".status.readyNodeNum",description="The number of ready nodes in the pool"
 // +kubebuilder:printcolumn:name="NotReadyNodes",type="integer",JSONPath=".status.unreadyNodeNum"
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
-// +kubebuilder:subresource:status
-// +genclient:nonNamespaced
-// +kubebuilder:deprecatedversion:warning="apps.openyurt.io/v1alpha1 NodePool is deprecated in v1.0.0+, unavailable in v1.2.0+; use apps.openyurt.io/v1beta1 NodePool"
-// +kubebuilder:storageversion
 
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-// +genclient
 // NodePool is the Schema for the nodepools API
 type NodePool struct {
 	metav1.TypeMeta   `json:",inline"`
@@ -92,7 +88,7 @@ type NodePool struct {
 	Status NodePoolStatus `json:"status,omitempty"`
 }
 
-// +kubebuilder:object:root=true
+//+kubebuilder:object:root=true
 
 // NodePoolList contains a list of NodePool
 type NodePoolList struct {
