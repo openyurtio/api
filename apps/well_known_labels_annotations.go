@@ -1,26 +1,21 @@
 /*
-Copyright 2021 The OpenYurt Authors.
+Copyright 2023 The OpenYurt Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
-@CHANGELOG
-OpenYurt Authors:
-change some const value
 */
 
-package v1alpha1
+package apps
 
-// YurtAppSet & YurtAppDaemon related labels and annotations
 const (
 	// ControllerRevisionHashLabelKey is used to record the controller revision of current resource.
 	ControllerRevisionHashLabelKey = "apps.openyurt.io/controller-revision-hash"
@@ -33,12 +28,12 @@ const (
 
 	// AnnotationPatchKey indicates the patch for every sub pool
 	AnnotationPatchKey = "apps.openyurt.io/patch"
-
-	AnnotationRefNodePool = "apps.openyurt.io/ref-nodepool"
 )
 
 // NodePool related labels and annotations
 const (
+	NodePoolTypeLabelKey = "openyurt.io/node-pool-type"
+
 	// LabelDesiredNodePool indicates which nodepool the node want to join
 	LabelDesiredNodePool = "apps.openyurt.io/desired-nodepool"
 
@@ -46,19 +41,11 @@ const (
 	// belonging to
 	LabelCurrentNodePool = "apps.openyurt.io/nodepool"
 
-	// LabelCurrentYurtAppDaemon indicates which service the yurtappdaemon is currently
-	// belonging to
-	LabelCurrentYurtAppDaemon = "apps.openyurt.io/yurtappdaemon"
-
 	AnnotationPrevAttrs = "nodepool.openyurt.io/previous-attributes"
 
-	// DefaultCloudNodePoolName defines the name of the default cloud nodepool
-	DefaultCloudNodePoolName = "default-nodepool"
+	NodePoolLabel            = "apps.openyurt.io/nodepool"
+	NodePoolTypeLabel        = "nodepool.openyurt.io/type"
+	NodePoolHostNetworkLabel = "nodepool.openyurt.io/hostnetwork"
 
-	// DefaultEdgeNodePoolName defines the name of the default edge nodepool
-	DefaultEdgeNodePoolName = "default-edge-nodepool"
-
-	// ServiceTopologyKey is the toplogy key that will be attached to node,
-	// the value will be the name of the nodepool
-	ServiceTopologyKey = "topology.kubernetes.io/zone"
+	NodePoolChangedEvent = "NodePoolChanged"
 )

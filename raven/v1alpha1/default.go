@@ -14,13 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package apis
+package v1alpha1
 
 import (
-	version "github.com/openyurtio/api/apps/v1alpha1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+
+	"github.com/openyurtio/api/raven"
 )
 
-func init() {
-	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
-	AddToSchemes = append(AddToSchemes, version.SchemeBuilder.AddToScheme)
+// SetDefaultsGateway set default values for Gateway.
+func SetDefaultsGateway(obj *Gateway) {
+	// Set default value for Gateway
+	obj.Spec.NodeSelector = &metav1.LabelSelector{
+		MatchLabels: map[string]string{
+			raven.LabelCurrentGateway: obj.Name,
+		},
+	}
 }

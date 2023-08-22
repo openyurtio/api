@@ -16,9 +16,9 @@ limitations under the License.
 
 package v1alpha1
 
-// Package v1alpha1 contains API Schema definitions for the apps v1alpha1API group
+// Package v1alpha1 contains API Schema definitions for the device v1alpha1API group
 // +kubebuilder:object:generate=true
-// +groupName=apps.openyurt.io
+// +groupName=iot.openyurt.io
 
 import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -27,7 +27,7 @@ import (
 
 var (
 	// GroupVersion is group version used to register these objects
-	GroupVersion = schema.GroupVersion{Group: "apps.openyurt.io", Version: "v1alpha1"}
+	GroupVersion = schema.GroupVersion{Group: "iot.openyurt.io", Version: "v1alpha1"}
 
 	SchemeGroupVersion = GroupVersion
 

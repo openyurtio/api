@@ -14,11 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package v1alpha1
+package v1beta1
 
-// Package v1alpha1 contains API Schema definitions for the apps v1alpha1API group
+// Package v1beta1 contains API Schema definitions for the raven v1beta1API group
 // +kubebuilder:object:generate=true
-// +groupName=apps.openyurt.io
+// +groupName=raven.openyurt.io
 
 import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
@@ -27,7 +27,7 @@ import (
 
 var (
 	// GroupVersion is group version used to register these objects
-	GroupVersion = schema.GroupVersion{Group: "apps.openyurt.io", Version: "v1alpha1"}
+	GroupVersion = schema.GroupVersion{Group: "raven.openyurt.io", Version: "v1beta1"}
 
 	SchemeGroupVersion = GroupVersion
 

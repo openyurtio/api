@@ -13,5 +13,21 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-// +groupName=apps.openyurt.io
-package v1beta1
+
+package apis
+
+import (
+	"k8s.io/apimachinery/pkg/runtime"
+)
+
+// Note !!! @kadisi
+// Do not change the name of the file or the contents of the file !!!!!!!!!!
+// Note !!!
+
+// AddToSchemes may be used to add all resources defined in the project to a Scheme
+var AddToSchemes runtime.SchemeBuilder
+
+// AddToScheme adds all Resources to the Scheme
+func AddToScheme(s *runtime.Scheme) error {
+	return AddToSchemes.AddToScheme(s)
+}

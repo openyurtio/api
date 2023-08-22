@@ -1,11 +1,11 @@
 /*
-Copyright 2022 The OpenYurt Authors.
+Copyright 2023 The OpenYurt Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -36,9 +36,11 @@ type NodePoolSpec struct {
 	// +optional
 	Type NodePoolType `json:"type,omitempty"`
 
-	// A label query over nodes to consider for adding to the pool
-	// +optional
-	Selector *metav1.LabelSelector `json:"selector,omitempty"`
+	// HostNetwork is used to specify that cni components(like flannel)
+	// will not be installed on the nodes of this NodePool.
+	// This means all pods on the nodes of this NodePool will use
+	// HostNetwork and share network namespace with host machine.
+	HostNetwork bool `json:"hostNetwork,omitempty"`
 
 	// If specified, the Labels will be added to all nodes.
 	// NOTE: existing labels with samy keys on the nodes will be overwritten.
@@ -70,6 +72,8 @@ type NodePoolStatus struct {
 	Nodes []string `json:"nodes,omitempty"`
 }
 
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+// +genclient
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:scope=Cluster,path=nodepools,shortName=np,categories=all
 // +kubebuilder:printcolumn:name="Type",type="string",JSONPath=".spec.type",description="The type of nodepool"
@@ -78,9 +82,8 @@ type NodePoolStatus struct {
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:subresource:status
 // +genclient:nonNamespaced
+// +kubebuilder:storageversion
 
-// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-// +genclient
 // NodePool is the Schema for the nodepools API
 type NodePool struct {
 	metav1.TypeMeta   `json:",inline"`
