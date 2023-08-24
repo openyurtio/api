@@ -20,7 +20,7 @@ import (
 	"k8s.io/klog/v2"
 	"sigs.k8s.io/controller-runtime/pkg/conversion"
 
-	"github.com/openyurtio/openyurt/pkg/apis/apps/v1beta1"
+	"github.com/openyurtio/api/apps/v1beta1"
 )
 
 func (src *NodePool) ConvertTo(dstRaw conversion.Hub) error {
