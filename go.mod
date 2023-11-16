@@ -3,9 +3,9 @@ module github.com/openyurtio/api
 go 1.17
 
 require (
-	github.com/openyurtio/openyurt v1.3.4
 	github.com/projectcalico/api v0.0.0-20230222223746-44aa60c2201f
 	k8s.io/api v0.22.3
+	k8s.io/apiextensions-apiserver v0.22.2
 	k8s.io/apimachinery v0.22.3
 	k8s.io/klog/v2 v2.9.0
 	k8s.io/kubernetes v1.22.3
@@ -15,6 +15,7 @@ require (
 
 require (
 	github.com/docker/distribution v2.7.1+incompatible // indirect
+	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-logr/logr v0.4.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
@@ -23,7 +24,9 @@ require (
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
+	github.com/onsi/gomega v1.19.0 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
+	github.com/rogpeppe/go-internal v1.10.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/stretchr/testify v1.8.4 // indirect
 	golang.org/x/net v0.14.0 // indirect
@@ -34,6 +37,7 @@ require (
 	k8s.io/apiserver v0.22.3 // indirect
 	k8s.io/component-base v0.22.3 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.1.2 // indirect
+	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
 replace (

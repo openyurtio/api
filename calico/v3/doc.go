@@ -14,15 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package apis
+// +groupName=apiregistration.k8s.io
 
-import (
-	v3 "github.com/openyurtio/api/calico/v3"
-
-	version "github.com/openyurtio/api/raven/v1alpha1"
-)
-
-func init() {
-	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
-	AddToSchemes = append(AddToSchemes, version.SchemeBuilder.AddToScheme, v3.SchemeBuilder.AddToScheme)
-}
+package v3
